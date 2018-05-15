@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Rakstits iepriekseja Java kura laika, sogad papildinats
  */
 package GUI;
 
@@ -20,9 +18,12 @@ public class ClientGUI extends javax.swing.JPanel {
     public ClientGUI() {
         initComponents();           
     }
+
+    
+    
     
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jComboBox2 = new javax.swing.JComboBox<>();
@@ -117,13 +118,10 @@ public class ClientGUI extends javax.swing.JPanel {
                 .addComponent(jPanelTickets, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-    }// </editor-fold>                        
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        
-    }                                          
     
-    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         DefaultListModel model = new DefaultListModel();
         jList1.setModel(model);
         jPanelTickets.removeAll();
@@ -138,23 +136,31 @@ public class ClientGUI extends javax.swing.JPanel {
         this.add(jPanelTickets);
         this.repaint();
         this.validate();
-    }                                            
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {                                    
-        // TODO add your handling code here:
-    }                                   
-
-    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {                                  
-       // VariationGUI random = new VariationGUI();
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+        /**
+         * Save selected numbers and show message box.
+         */
+    }//GEN-LAST:event_SubmitButtonActionPerformed
+    
+    private void jList1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList1ValueChanged
+//        System.out.println("Test output");
+        VariationGUI random = new VariationGUI();
         
-    }                                 
+    }//GEN-LAST:event_jList1ValueChanged
 
-    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {                                    
+    private void jList1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jList1KeyPressed
+        
+        
+    }//GEN-LAST:event_jList1KeyPressed
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         // TODO add your handling code here:
-    }                                   
+    }//GEN-LAST:event_jList1MouseClicked
 
 
-    // Variables declaration - do not modify                     
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton SubmitButton;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -162,5 +168,5 @@ public class ClientGUI extends javax.swing.JPanel {
     private javax.swing.JPanel jPanelTickets;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel randomVariatonLabel;
-    // End of variables declaration
+    // End of variables declaration//GEN-END:variables
 }

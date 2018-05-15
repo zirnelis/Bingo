@@ -3,6 +3,10 @@
  */
 package Connect;
 
+import com.esotericsoftware.kryo.Kryo;
+import com.esotericsoftware.kryonet.Client;
+import com.esotericsoftware.kryonet.Server;
+import java.io.IOException;
 import java.io.Serializable;
 
 /**
@@ -10,31 +14,32 @@ import java.io.Serializable;
  * @author Elina
  */
 public class KryoServer implements Serializable {
-    private String serverName;
-    private String serverHostname;
-    private int port;
+    Server server = new Server();
+    Kryo kryo = server.getKryo();
 
-    public KryoServer() {
-        this.serverName = "";
-        this.port = 0;
-        this.serverHostname = "";
+    public KryoServer() throws IOException {
+        
+        kryo.register(String.class);
+        server.start();
+        
+        server.bind(54555, 54777);
     }
 
-    public KryoServer(String serverName, String serverHostname, int port) {
-        this.serverName = serverName;
-        this.port = port;
-        this.serverHostname = serverHostname;
+    public Server getServer() {
+        return server;
     }
 
-    public String getServerName() {
-        return serverName;
+    public Kryo getKryo() {
+        return kryo;
     }
 
-    public String getServerHostname() {
-        return serverHostname;
+    public void setServer(Server server) {
+        this.server = server;
     }
 
-    public int getPort() {
-        return port;
+    public void setKryo(Kryo kryo) {
+        this.kryo = kryo;
     }
+    
+    
 }
