@@ -17,6 +17,7 @@ import GUI.*;
 /**
  *
  * @author Elina
+ * ITB3
  */
 public class LatLoto extends Application {
     
