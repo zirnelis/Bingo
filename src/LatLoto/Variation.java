@@ -16,8 +16,39 @@ public class Variation {
     public int correctNumbers = 0;
     public ArrayList<Integer> selectedNumbers = new ArrayList<>();
     
-    public Variation(){
-        
+    public Variation(int var, int correct, ArrayList<Integer> list){
+        this.variationNr = var;
+        this.correctNumbers = correct;
+        this.selectedNumbers = list;
     }
 
+    public Variation() {
+        this.variationNr = 0;
+        this.correctNumbers = 0;
+        this.selectedNumbers = null;
+    }
+
+    public int getVariationNr() {
+        return variationNr;
+    }
+
+    public int getCorrectNumbers() {
+        return correctNumbers;
+    }
+
+    public ArrayList<Integer> getSelectedNumbers() {
+        return selectedNumbers;
+    }
+
+    public void setVariationNr(int variationNr) {
+        this.variationNr = variationNr;
+    }
+
+    public void setCorrectNumbers(int correctNumbers) {
+        this.correctNumbers = correctNumbers;
+    }
+
+    public void setSelectedNumbers(ArrayList<Integer> selectedNumbers) {
+        this.selectedNumbers = selectedNumbers;
+    }
 }

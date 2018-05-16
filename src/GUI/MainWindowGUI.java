@@ -16,15 +16,12 @@ import javax.swing.JPanel;
 
 public class MainWindowGUI extends javax.swing.JFrame {
 
-    
     /**
      * Creates new form Seminar_12
      */
     public MainWindowGUI() {  
         initComponents();
     }
-
-    
     
 //    @SuppressWarnings("unchecked");
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
@@ -36,14 +33,14 @@ public class MainWindowGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Buy a variation");
+        jMenu1.setText("Izveleties bileti");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
             }
         });
 
-        jMenuItem1.setText("Buy");
+        jMenuItem1.setText("Variantu izvele");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -76,7 +73,7 @@ public class MainWindowGUI extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {                                           
         //JFrame.getWindows(ClientGUI);
-        ClientGUI clientInterface = new ClientGUI();
+        ClientApp clientInterface = new ClientApp();
         clientInterface.setBounds(10, 10, 1500,1000);
         //clientInterface.setBackground(Color.red);
         this.add(clientInterface);

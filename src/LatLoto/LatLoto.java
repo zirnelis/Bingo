@@ -13,6 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import GUI.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import Kryo.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,18 +28,23 @@ import GUI.*;
  */
 public class LatLoto extends Application {
     
+    private ClientApp clientApp = new ClientApp();
+    
+    
+    
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException {
         Button btn = new Button();
 
         MainWindowGUI maingui = new MainWindowGUI();
         
+        btn.setFont(Font.font(STYLESHEET_CASPIAN, FontWeight.BOLD, 25));
         btn.setText("Sākam");
         
         
         StackPane root = new StackPane();
         root.getChildren().add(btn);
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 600, 200);
         
         primaryStage.setTitle("Laipni lūdzam LatLoto!");
         primaryStage.setScene(scene);
@@ -49,11 +61,19 @@ public class LatLoto extends Application {
                 maingui.setVisible(true);
             }
         });
+        
+//        Packet.Packet02Message msg = new Packet.Packet02Message();
+//        msg.equals(clientApp.getVtempGUI().getVariation());
+//        
+//        KryoClient client = new KryoClient(msg);
+        
+//        System.out.println("Tik tāl ir aizgājais");
+        
 
     }
     
     public void btnActionListener(ActionEvent evt) {
-        System.out.println("Test");
+        
     }
 
     /**

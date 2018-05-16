@@ -74,4 +74,30 @@ public class VariationGUI extends JPanel implements ActionListener {
             }
         }
     }    
+
+    public JButton[] getTicketButtons() {
+        return ticketButtons;
+    }
+
+    public Variation getVariation() {
+        return variation;
+    }
+
+    public Random getRand() {
+        return rand;
+    }
+
+    public void setTicketButtons(JButton[] ticketButtons) {
+        this.ticketButtons = ticketButtons;
+    }
+
+    public void setVariation(Variation variation) {
+        this.variation = variation;
+    }
+
+    public void setRand(Random rand) {
+        this.rand = rand;
+    }
+    
+    
 }
