@@ -29,7 +29,11 @@ import java.util.logging.Logger;
 public class LatLoto extends Application {
     
     private ClientApp clientApp = new ClientApp();
-    
+
+
+    public LatLoto() throws IOException {
+
+    }
     
     
     @Override
@@ -65,8 +69,8 @@ public class LatLoto extends Application {
 //        Packet.Packet02Message msg = new Packet.Packet02Message();
 //        msg.equals(clientApp.getVtempGUI().getVariation());
 //        
-//        KryoClient client = new KryoClient(msg);
-        
+//        
+//        
 //        System.out.println("Tik tāl ir aizgājais");
         
 

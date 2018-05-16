@@ -30,7 +30,7 @@ public class KryoClient {
         registerPackets();
         client.start();
         
-        client.connect(500, "localhost", 8070);
+        client.connect(5000, "localhost", 8070);
         
         Packet.Packet01Message first = new Packet.Packet01Message();
         first.message = "First test message (String type)";

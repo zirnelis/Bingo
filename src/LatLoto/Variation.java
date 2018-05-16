@@ -23,9 +23,7 @@ public class Variation {
     }
 
     public Variation() {
-        this.variationNr = 0;
-        this.correctNumbers = 0;
-        this.selectedNumbers = null;
+        
     }
 
     public int getVariationNr() {
