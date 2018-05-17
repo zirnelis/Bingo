@@ -11,12 +11,19 @@ import LatLoto.Variation;
  */
 public class Packet {
     
+    public String message;
+    
+    public Packet()
+    {
+        
+    }
+   
     public static class Packet01Message {
         String message;
     }
     
-    public static class Packet02Message {
-        Variation message;
-    }
+//    public static class Packet02Message {
+//        Variation message;
+//    }
     
 }

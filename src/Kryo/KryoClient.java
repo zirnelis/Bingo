@@ -9,6 +9,8 @@ import com.esotericsoftware.kryonet.*;
 import com.esotericsoftware.minlog.Log;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,7 +18,7 @@ import java.util.ArrayList;
  */
 
 
-public class KryoClient {
+public final class KryoClient {
     
     
     Client client = new Client();
@@ -24,49 +26,67 @@ public class KryoClient {
 
     Kryo kryo = client.getKryo();
     
-    public KryoClient(Packet.Packet02Message msg) throws IOException  {
-        this.kcl = new KryoClientListener();
-        client.addListener(kcl);
+    public KryoClient() throws IOException  {
+        Thread startThread = new Thread (new Runnable() {
+            public void run() {
+                client.start();
+            }
+        }); 
+        
         registerPackets();
-        client.start();
         
-        client.connect(5000, "localhost", 8070);
-        
-        Packet.Packet01Message first = new Packet.Packet01Message();
-        first.message = "First test message (String type)";
-        
-        client.sendTCP(first); //send test message
-        
-        client.sendTCP(msg); //send variation
-    }
+        Thread connectThread = new Thread (new Runnable() {
+            public void run() {
+                try {
+                    client.connect(5000, "localhost", 54555 );
+                } catch (IOException ex) {
+                    Logger.getLogger(KryoClient.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }); 
 
-    public KryoClient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        
+//        
+//        this.kcl = new KryoClientListener();
+//        client.addListener(kcl);
+         
+        System.out.println("Kryo client started");
     }
 
     public Client getClient() {
         return client;
     }
 
-    public Kryo getKryo() {
+   /*public Kryo getKryo() {
         return kryo;
-    }
+    }*/
 
     public void setClient(Client client) {
         this.client = client;
     }
 
     public void setKryo(Kryo kryo) {
-        this.kryo = kryo;
+       // this.kryo = kryo;
     }
     
     private void registerPackets() {
         kryo.register(Packet.class);
-        kryo.register(String.class);
-        kryo.register(ArrayList.class);
-        kryo.register(Variation.class);
-        
     }
     
+    public void sendMessage(String s)
+    {
+        //Packet.Packet01Message first = new Packet.Packet01Message();
+        //first.message =testMessage;
+        
+        Packet.Packet01Message varPacket = new Packet.Packet01Message();
+        
+        varPacket.message = s;
+        
+        client.sendTCP(varPacket); //send test message
+        
+        System.out.println("Variation sent!");
+
+    }
     
 }

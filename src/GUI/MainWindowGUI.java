@@ -8,6 +8,7 @@ package GUI;
  * @author Elina
  */
 
+import com.esotericsoftware.kryonet.Client;
 import java.awt.Color;
 import java.awt.MenuItem;
 import javax.swing.JFrame;
@@ -111,6 +112,7 @@ public class MainWindowGUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainWindowGUI().setVisible(true);
+                Client client = new Client();
             }
         });
         

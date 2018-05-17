@@ -21,18 +21,18 @@ public class KryoServerListener extends Listener {
     ArrayList<Integer> winningNumbers = new ArrayList<Integer>();
     Random rand = new Random();
     Connection conn;
-    KryoServer kserver = new KryoServer();
-    
+
     public KryoServerListener() throws IOException {
         
         for(int i = 0; i < 5; i++) {
             winningNumbers.add(rand.nextInt(35)+1);
         }
-
+        System.out.println("Lucky numbers were generated...");
     }
     
     @Override
     public void connected(Connection c) {
+        // shii zinja paraadaas, tad kad kaads piesleedzas pie servera!
         System.out.println("Numbers: ");
         for (int i = 0; i < winningNumbers.size(); i++) {
             System.out.println(winningNumbers.get(i)+" ");
@@ -42,19 +42,24 @@ public class KryoServerListener extends Listener {
     
     public void disconnected(Connection c){
         c.close();
-        JOptionPane.showMessageDialog(null, "Disconnected!");
+        //JOptionPane.showMessageDialog(null, "Disconnected!");
     }
     
     public void received(Connection c, Object o){
         int count = 0;
-        if(o instanceof Packet01Message) {
-            String request = (String)o;
-            System.out.println("Server"+request);
-                    
-            c.sendTCP(winningNumbers); 
+        
+        //System.out.println("Server recieved something!!!!");
+        
+        if(o instanceof Packet) {
+            
+            System.out.println("Server recieved Packet");
+            //System.out.println("Server recieved Packet class with message: "+ ((Packet) o).message);
+           
+            
+            //c.sendTCP(winningNumbers); 
         }
 
-        if (o instanceof Packet02Message){
+        /*if (o instanceof Packet02Message){
             for (int i = 0; i <= winningNumbers.size() - 1; i++) {
                 for (int j = 0; j <= ((Packet02Message) o).message.selectedNumbers.size() - 1; j++) {
                     if (Objects.equals(winningNumbers.get(i), ((Packet02Message) o).message.selectedNumbers.get(j))) {
@@ -65,7 +70,7 @@ public class KryoServerListener extends Listener {
                 }
             }
             JOptionPane.showMessageDialog(null, "You have guessed " + count + " numbers!");
-        }
+        }*/
         
     }
  

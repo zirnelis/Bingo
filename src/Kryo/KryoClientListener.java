@@ -15,25 +15,26 @@ import javax.swing.JOptionPane;
  * @author Elina
  */
 public class KryoClientListener extends Listener{
-    private Client client = new Client();
-    
+ 
     public KryoClientListener() {
-
+        System.out.println("Listener also added");
     }
     
     public void connected(Connection c) {
-        JOptionPane.showMessageDialog(null, "Connected!");
+        System.out.println("Client connected!");
+        //JOptionPane.showMessageDialog(null, "Connected!");
     }
     
     public void disconnected(Connection c){
-        c.close();
-        JOptionPane.showMessageDialog(null, "Disconnected!");
+        System.out.println("Client disconnected");
+        //c.close();
+        //JOptionPane.showMessageDialog(null, "Disconnected!");
     }
     
     public void received(Connection c, Object o){
-        if (o instanceof Packet.Packet02Message) {
+       /* if (o instanceof Packet.Packet02Message) {
             JOptionPane.showMessageDialog(null, "Variation recieved "+((Packet.Packet02Message) o).message.selectedNumbers.toString());
-        }
+        }*/
     }
     
 }

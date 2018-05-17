@@ -3,8 +3,15 @@
  */
 package GUI;
 
+import Database.LatLotoDb;
+import Kryo.KryoClient;
+import Kryo.KryoServer;
+import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Listener;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -22,9 +29,24 @@ public class ClientApp extends javax.swing.JPanel {
     
     VariationGUI vtempGUI = new VariationGUI();
     ArrayList<VariationGUI> vList = new ArrayList<>();
+    KryoClient kryoClient = null;
+    KryoServer kryoServer = null;
     
     public ClientApp() {
-        initComponents();           
+        initComponents();       
+        
+        try {
+            
+            kryoClient = new KryoClient();
+            kryoServer = new KryoServer();
+            
+            LatLotoDb db = new LatLotoDb();
+        } catch (IOException ex) {
+            Logger.getLogger(ClientApp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+//        kryoClient.sendMessage("Test message to server");
+        
     }
 
     
@@ -160,7 +182,7 @@ public class ClientApp extends javax.swing.JPanel {
         this.validate();
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt)  {//GEN-FIRST:event_SubmitButtonActionPerformed
         /**
          * Save selected numbers and show message box.
          */
@@ -170,6 +192,7 @@ public class ClientApp extends javax.swing.JPanel {
                     System.out.println("Nav atzimeti visi 5 skaitli");
                     isOk = false;
                 } else {
+                    //kryoClient.sendTest("Sutam zinju uz serveri, sheit jasuta skaitli, tikai japartaisa packet klase, lai glabatu skaitljus");
                     System.out.println("it`s ok");
                     isOk = true;
                 }
@@ -177,6 +200,8 @@ public class ClientApp extends javax.swing.JPanel {
         
         if(isOk) {
             JOptionPane.showMessageDialog(null, vList.size()+" variations submitted!");
+//            KryoClient cl = new KryoClient();
+            kryoClient.sendMessage(vList.toString());
         } else {
             JOptionPane.showMessageDialog(null, "Please fill all of the variations!");
         }
